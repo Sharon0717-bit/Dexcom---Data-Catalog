@@ -1,0 +1,16 @@
+certifi==2020.6.20
+Jinja2==2.11.2
+MarkupSafe==1.1.1
+mkl-fft==1.1.0
+mkl-random==1.1.1
+mkl-service==2.3.0
+mysql==0.0.2
+mysqlclient==2.0.1
+numpy==1.18.5
+pandas @ file:///C:/ci/pandas_1592833613419/work
+python-dateutil==2.8.1
+pytz==2020.1
+simplejson==3.17.0
+six==1.15.0
+SQLAlchemy @ file:///C:/ci/sqlalchemy_1593445271541/work
+wincertstore==0.2

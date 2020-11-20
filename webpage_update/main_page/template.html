@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Jekyll v4.0.1">
+    <title>Customer Advocacy Data Catalog</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/jumbotron/">
+
+    <!-- Bootstrap core CSS -->
+<link href="../assets/dist/css/bootstrap.css" rel="stylesheet">
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+
+    <!-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script> -->
+    <script
+    src="https://code.jquery.com/jquery-3.5.1.js"
+    integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+    crossorigin="anonymous"></script>
+    <link href="jumbotron.css" rel="stylesheet">
+
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+  <a class="navbar-brand" href="#">Customer Advocacy Data Catalog</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+    <ul class="navbar-nav mr-auto">
+    </ul>
+    <form class="form-inline my-2 my-lg-0" id="search-data-files">
+      <input class="form-control mr-sm-4" type="text" id="search-data-files-" onkeyup="search_function()" placeholder="Search by title" aria-label="Search">
+      <!-- <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button> -->
+    </form>
+  </div>
+</nav>
+<br>
+<main role="main">
+  <div class="container" id="data-files-list">
+    <!-- <div class="row"> -->
+      {% for post in posts %}
+            <div class="col-md-12" id="short-desc">
+              {% if post.landing_page_path == '#' %}
+              <h2><a class="article-title" href="{{ post.path }}">{{ post.title |title}}</a></h2>
+              {% else %}
+              <h2><a class="article-title" href="{{ post.landing_page_path }}">{{ post.title |title}}</a></h2>
+              {% endif %}
+              <h6>Short Description: </h6>
+              <p>{{ post.short_description }}</p>
+              <h6>Maintained By:</h6>
+              <p>{{ post.maintained_by }}</p>              
+              <p>
+                <!-- <a: class="btn btn-secondary" data-toggle="collapse" href="#{{post.cid}}" role="button" aria-expanded="false" aria-controls={{ post.cid }}>
+                  View details &raquo;
+                </a> -->
+                <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#{{post.cid}}" aria-expanded="false" aria-controls={{ post.cid }}>
+                  View details &raquo;
+                </button>
+              </p>
+              <div class="collapse" id={{ post.cid }}>
+                <div class="card card-body">
+                  <h6>Path: </h6>
+                  <a href="{{ post.path }}">{{ post.path }}</a>
+                  <h6>Landing Page Path:</h6>
+                  <a href="{{ post.landing_page_path }}">{{ post.landing_page_path }}</a>
+                  <h6> Repository Path: </h6>
+                  <a href="{{ post.repository_path }}">{{ post.repository_path }}</a>
+                  <h6> Github Repository Path: </h6>
+                  <a href="{{ post.github_repository_path }}">{{ post.github_repository_path }}</a> 
+                  <h6>Long Description:</h6>
+                  <p>{{ post.long_description }}</p>
+                  <h6>Long Description HTML:</h6>
+                  <p>{{ post.long_description_html }}</p>
+                  <h6>Created By:</h6>
+                  <p>{{ post.created_by }}</p>
+                </div>
+              </div>
+            </div>
+      {% endfor %}
+    <!-- </div> -->
+  </div> 
+  <div class="container">
+    <!-- <nav aria-label="Page navigation example">
+      <ul class="pagination">
+        {% for a in A %}
+        <li class="page-item"><a class="page-link" href="result{{a}}.html">{{a + 1}}</a></li>
+        {% endfor %}
+      </ul>
+    </nav> -->
+  </div>
+</main>
+
+<footer class="container">
+  <p>&copy; Dexcom</p>
+</footer>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+      <script>window.jQuery || document.write('<script src="../assets/js/vendor/jquery.slim.min.js"><\/script>')</script><script src="../assets/dist/js/bootstrap.bundle.js"></script>
+	
+
+<script>
+  function search_function() {
+    // Declare variables 
+    var id, input, filter, table, tr, td, i;
+
+    //id = $("#accordionExample .collapse");
+    //id.removeClass('show')
+
+    input = document.getElementById("search-data-files-");
+    filter = input.value.toUpperCase();
+    table = document.getElementById('data-files-list');
+    tr = table.getElementsByClassName("col-md-12");
+
+    // Loop through all table rows, and hide those who don't match the search query
+    for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("h2")[0];
+    if (td) {
+      if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    } 
+    }
+  }
+</script>
+  </body>
+</html>
